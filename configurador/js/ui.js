@@ -19,7 +19,7 @@
 
   const STEPS = window.OndaConfigSteps;
   // Espelha o CATALOG de themes/theme-catalog.js (fonte oficial da lista).
-  const AVAILABLE_THEMES = ["default", "midnight", "brutalist"];
+  const AVAILABLE_THEMES = ["default", "midnight", "brutalist", "fallenevtributo"];
 
   let cachedThemeCss = {}; // { [themeId]: cssText }
   let currentStep = "identidade";

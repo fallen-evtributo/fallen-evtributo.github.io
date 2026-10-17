@@ -10,7 +10,7 @@
 (() => {
   "use strict";
 
-  const CATALOG = ["default", "midnight", "brutalist"];
+  const CATALOG = ["default", "midnight", "brutalist", "fallenevtributo"];
   const STYLE_ID = "onda-theme-style";
   const container = document.querySelector("[data-themes-catalog]");
 

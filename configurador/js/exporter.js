@@ -65,7 +65,7 @@
   };
 
   /* Theme manifestados carregados (assets). */
-  const THEME_ASSETS = { default: [], midnight: [], brutalist: ["assets/favicon.svg"] };
+  const THEME_ASSETS = { default: [], midnight: [], brutalist: ["assets/favicon.svg"], fallenevtributo: [] };
 
   const fetchText = async (url) => {
     const response = await fetch(url, { cache: "no-store" });
@@ -113,7 +113,7 @@
 # (Netlify, Vercel, Cloudflare Pages, hospedagem compartilhada, etc.).
 
 # Dica: altere a aparência editando "data/site.json" → "theme":
-# "default" | "midnight" | "brutalist" . Recarregue que muda tudo.
+# "default" | "midnight" | "brutalist" | "fallenevtributo" . Recarregue que muda tudo.
 
 # Gerado pelo Onda Artist Kit (https://github.com/Onda-Noturna/onda-artist-kit) — MIT License.`;
 

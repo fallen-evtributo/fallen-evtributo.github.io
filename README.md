@@ -36,7 +36,7 @@ A proposta é oferecer uma base simples, leve e de baixo custo para que qualquer
 | Google Calendar (Fase 5) | Fonte opcional da agenda via calendário público (sem API Key/OAuth) com fallback local | Implementado (opcional) |
 | Release eletrônico (Fase 3) | Página de release com biografia, integrantes, discografia, destaques, contratação e exportação em PDF | Implementado |
 | Links e presença digital | Bloco de links para redes sociais, streaming e contato | Planejado |
-| Sistema de Themes (Fase 6) | Aparência separada do conteúdo — seleção por `data/site.json`, temas Default, Midnight e Brutalist, com fallback | Implementado |
+| Sistema de Themes (Fase 6) | Aparência separada do conteúdo — seleção por `data/site.json`, temas Default, Midnight, Brutalist e FallenEVTributo, com fallback | Implementado |
 
 ## Estrutura inicial
 
@@ -60,6 +60,7 @@ onda-artist-kit/
 │   ├── default/           # Theme padrão (referência) — theme.json + theme.css
 │   ├── midnight/          # Theme noturno/tecnológico
 │   ├── brutalist/         # Theme cru/experimental
+│   ├── fallenevtributo/   # Theme gótico/azul (Evanescence tribute)
 │   ├── index.html         # catálogo de Themes
 │   └── theme-catalog.js
 │
@@ -249,7 +250,7 @@ No arquivo `data/site.json`, defina a propriedade `theme` com o id do tema:
 { "theme": "midnight" }
 ```
 
-Valores válidos incluídos: `default`, `midnight` e `brutalist`. Ao trocar e recarregar o site, a aparência muda — o conteúdo permanece o mesmo. Se o tema informado não existir ou estiver incompleto, o kit usa automaticamente o **Theme Default** (o site nunca quebra).
+Valores válidos incluídos: `default`, `midnight`, `brutalist` e `fallenevtributo`. Ao trocar e recarregar o site, a aparência muda — o conteúdo permanece o mesmo. Se o tema informado não existir ou estiver incompleto, o kit usa automaticamente o **Theme Default** (o site nunca quebra).
 
 ### Estrutura de um Theme
 
