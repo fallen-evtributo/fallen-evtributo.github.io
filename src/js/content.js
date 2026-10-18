@@ -4,7 +4,8 @@
 
    Helpers compartilhados por todas as páginas: carregamento de JSON,
    escape de HTML, aplicação de textos/parágrafos, imagens com fallback
-   e renderizadores reutilizáveis (integrantes, discografia, links).
+   e renderizadores reutilizáveis (integrantes, discografia, repertório
+   de bandas tributo e links).
 
    Modelo de funcionamento: as páginas carregam conteúdo estático de
    demonstração como fallback; quando servidas por HTTP, os dados de
@@ -136,6 +137,46 @@
     renderList(selector, html);
   };
 
+  /* Normaliza uma entrada de repertório: string ("Título") ou objeto
+     { title, album }. Entradas inválidas viram { title: "" } e são descartadas. */
+  const normalizeSong = (item) => {
+    if (typeof item === "string") {
+      return { title: item.trim(), album: "" };
+    }
+    if (item && typeof item === "object" && typeof item.title === "string") {
+      return { title: item.title.trim(), album: String(item.album ?? "").trim() };
+    }
+    return { title: "", album: "" };
+  };
+
+  /* Filtra entradas vazias/inválidas de uma lista de músicas. */
+  const songItems = (items) =>
+    (items ?? []).map(normalizeSong).filter((song) => song.title !== "");
+
+  /* Renderiza cartões de músicas em destaque (ex.: "mais tocadas e pedidas"
+     de uma banda tributo). Sem capa: títulos em destaque, álbum opcional. */
+  const renderSongCards = (selector, items) => {
+    const html = songItems(items).map(
+      (song) => `<article class="card song-card">
+  <h3 class="card__title">${escapeHTML(song.title)}</h3>
+  ${song.album ? `<p class="card__meta">${escapeHTML(song.album)}</p>` : ""}
+</article>`
+    );
+    renderList(selector, html);
+  };
+
+  /* Renderiza a lista numerada do repertório completo. Numeração visível
+     gerada pelo índice (01, 02, …); álbum, quando informado, é opcional. */
+  const renderSongList = (selector, items) => {
+    const html = songItems(items).map(
+      (song, index) => `<li class="song-list__item">
+  <span class="song-list__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+  <span class="song-list__title">${escapeHTML(song.title)}${song.album ? ` <span class="song-list__album">${escapeHTML(song.album)}</span>` : ""}</span>
+</li>`
+    );
+    renderList(selector, html);
+  };
+
   /* Renderiza a lista de links/redes (data/links.json). */
   const renderLinks = (selector, links) => {
     const html = (links ?? [])
@@ -168,6 +209,9 @@
     platformLabel,
     discographyLinksHTML,
     renderDiscography,
+    normalizeSong,
+    renderSongCards,
+    renderSongList,
     renderLinks,
     renderMembers
   };

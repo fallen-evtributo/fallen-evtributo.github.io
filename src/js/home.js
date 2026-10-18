@@ -9,7 +9,22 @@
 (() => {
   "use strict";
 
-  const { loadJSON, setTextAll, setParagraphs, renderDiscography, renderLinks } = window.OndaContent;
+  const {
+    loadJSON,
+    setTextAll,
+    setParagraphs,
+    renderDiscography,
+    renderSongCards,
+    renderLinks
+  } = window.OndaContent;
+
+  /* Oculta a seção que contém um container quando não há conteúdo. */
+  const toggleSectionOf = (container, hasContent) => {
+    const section = container?.closest("section");
+    if (section) {
+      section.hidden = !hasContent;
+    }
+  };
 
   const hydrate = async () => {
     const [band, linksData, releaseData] = await Promise.all([
@@ -22,21 +37,48 @@
     setTextAll("[data-band-name]", band.name);
     setTextAll("[data-hero-eyebrow]", `${band.city}, ${band.state} · ${band.genre}`);
     setTextAll("[data-band-tagline]", band.tagline);
+    setTextAll("[data-hero-lead]", band.lead);
+
+    /* Logotipo (opcional; sem ele, a marca padrão do Core permanece) */
+    const logoImg = document.querySelector("[data-logo-img]");
+    const logoFallback = document.querySelector("[data-logo-fallback]");
+    if (logoImg && logoFallback && band.logo) {
+      logoImg.src = band.logo;
+      logoImg.alt = band.logoAlt ?? "";
+      logoImg.hidden = false;
+      logoFallback.hidden = true;
+    }
 
     /* Sobre */
     setParagraphs("[data-about-text]", band.about);
     const ficha = {
       origem: `${band.city}, ${band.state}`,
+      regiao: band.region,
       genero: band.genre,
       desde: band.founded,
       formacao: `${(band.members ?? []).length} integrantes`
     };
     Object.entries(ficha).forEach(([key, value]) => {
-      setTextAll(`[data-ficha="${key}"]`, String(value));
+      if (value !== null && value !== undefined && value !== "") {
+        setTextAll(`[data-ficha="${key}"]`, String(value));
+      }
     });
 
-    /* Música (discografia compartilhada com o release) */
+    /* Música (discografia compartilhada com o release; bandas autorais) */
     renderDiscography("[data-discography]", releaseData.discography, { showDescription: false });
+
+    /* Músicas em destaque (repertório de bandas tributo — opcional).
+       Sem data/repertoire.json, o conteúdo estático da página permanece. */
+    try {
+      const repertoire = await loadJSON("data/repertoire.json");
+      const highlights = document.querySelector("[data-song-highlights]");
+      if (highlights) {
+        renderSongCards("[data-song-highlights]", repertoire.highlights);
+        toggleSectionOf(highlights, !highlights.hidden);
+      }
+    } catch (error) {
+      console.warn("[Onda] Sem data/repertoire.json — mantendo a seção de músicas em destaque do HTML.", error);
+    }
 
     /* Contato para contratação */
     const booking = releaseData.booking ?? {};
@@ -49,6 +91,16 @@
         emailLink.hidden = false;
       } else {
         emailLink.hidden = true;
+      }
+    }
+    const phoneLink = document.querySelector("[data-booking-phone]");
+    if (phoneLink) {
+      if (booking.phone) {
+        phoneLink.href = `tel:${String(booking.phone).replace(/\s+/g, "")}`;
+        phoneLink.textContent = booking.phone;
+        phoneLink.hidden = false;
+      } else {
+        phoneLink.hidden = true;
       }
     }
 
@@ -64,7 +116,11 @@
       const emptyMessage = document.querySelector("[data-next-show-empty]");
       if (container) {
         if (nextShow) {
+          container.hidden = false;
           container.innerHTML = window.OndaShowCard.render(nextShow);
+          if (emptyMessage) {
+            emptyMessage.hidden = true;
+          }
         } else {
           container.hidden = true;
           if (emptyMessage) {

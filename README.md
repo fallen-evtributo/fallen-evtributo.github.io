@@ -48,7 +48,7 @@ onda-artist-kit/
 │   ├── icons/           # ícones e favicon
 │   └── fonts/           # fontes utilizadas
 │
-├── data/                # conteúdo e dados (agenda, releases, links)
+├── data/                # conteúdo e dados (agenda, releases, repertório, links)
 │
 ├── src/
 │   ├── css/             # estilos base
@@ -96,7 +96,7 @@ As páginas carregam os dados de `data/*.json` via `fetch`. Servindo localmente 
 
 ## Dados do conteúdo (`data/`)
 
-O conteúdo do site e do release é carregado dos arquivos JSON do diretório `data/` — personalize-os para usar o kit com o seu projeto:
+O conteúdo do site e do release é carregado dos arquivos JSON do diretório `data/` — personalize-os para usar o kit com o seu projeto. Um exemplo completo de personalização (banda tributo com repertório) está em [`docs/fallen-personalizacao.md`](docs/fallen-personalizacao.md):
 
 ### `data/band.json` — dados do artista
 
@@ -110,6 +110,8 @@ O conteúdo do site e do release é carregado dos arquivos JSON do diretório `d
 | `musicalIdentity` | texto da identidade musical no release |
 | `logo`, `logoAlt` | logotipo (opcional; sem ele, usa-se a marca do Core) |
 | `photo`, `photoAlt` | foto principal do release (opcional; sem ela, o elemento é ocultado) |
+| `lead` | linha de apoio opcional exibida no hero da Home |
+| `region` | região de atuação (opcional; exibida na ficha técnica da Home) |
 
 ### `data/links.json` — redes e links
 
@@ -120,14 +122,29 @@ Lista `links` com `{ label, url }` — apenas as plataformas configuradas são e
 | Campo | Uso |
 | --- | --- |
 | `headline` | chamada exibida no topo do release |
+| `description` | frase opcional de descrição no topo do release |
 | `presentation` | texto de apresentação |
 | `biography` | parágrafos da biografia |
 | `highlights` | lista de destaques (a seção é ocultada se vazia) |
 | `experience` | atuação/experiência (a seção é ocultada se vazia) |
-| `discography` | lançamentos: `title`, `type` (single, EP, álbum), `year`, `description`, `cover` (opcional) e `links` (ex.: `spotify`, `youtube`, `bandcamp` — apenas links informados geram botões) |
+| `discography` | lançamentos autorais: `title`, `type` (single, EP, álbum), `year`, `description`, `cover` (opcional) e `links` (ex.: `spotify`, `youtube`, `bandcamp` — apenas links informados geram botões). **Pode ser omitido** por artistas sem lançamentos (ex.: bandas tributo) |
 | `booking` | `description`, `email`, `phone` (opcionais; vazios não são exibidos) |
 
 Campos de imagem (`logo`, `photo`, `cover`) aceitam caminhos em `assets/` ou `null` — o Core aplica fallback (marca do Core, iniciais da capa) ou oculta o elemento, sem imagens quebradas.
+
+### `data/repertoire.json` — repertório de bandas tributo (opcional)
+
+Estrutura dedicada para quem **não tem discografia autoral** — bandas tributo e formações que executam repertório de terceiros. A Home consome `highlights` (seção “Mais tocadas e pedidas”) e o Release consome `songs` (seção “Repertório completo”), evitando duplicar o conteúdo entre as páginas.
+
+| Campo | Uso |
+| --- | --- |
+| `title`, `subtitle` | título e frase curta do repertório |
+| `intro` | parágrafos de apresentação da seção no release |
+| `note` | observação de rodapé (ex.: o setlist pode variar) |
+| `highlights` | músicas em destaque da Home — string (`"Título"`) ou `{ "title", "album" }` |
+| `songs` | repertório completo do Release, na ordem desejada — mesma forma de entrada |
+
+Comportamento do Core: sem o arquivo, as seções mantêm o conteúdo estático do HTML (compatível com abertura via `file://`); com a lista vazia, as seções são ocultadas automaticamente. Os renderizadores `renderSongCards` e `renderSongList` ficam em `src/js/content.js` e são reutilizáveis por qualquer página.
 
 ### `data/shows.json` — agenda de shows
 

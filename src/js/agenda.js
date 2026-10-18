@@ -13,7 +13,7 @@
 (() => {
   "use strict";
 
-  const { renderList } = window.OndaContent;
+  const { renderList, loadJSON, setTextAll } = window.OndaContent;
   const { classifyShows } = window.OndaShows;
   const { render } = window.OndaShowCard;
 
@@ -36,6 +36,15 @@
 
   const hydrate = async () => {
     setStatus("Carregando agenda...");
+
+    /* Identificação da banda (opcional — sem JSON, o HTML estático permanece). */
+    try {
+      const band = await loadJSON("data/band.json");
+      setTextAll("[data-band-name]", band.name);
+      setTextAll("[data-page-eyebrow]", `Agenda · ${band.city}, ${band.state} · ${band.genre}`);
+    } catch (error) {
+      console.warn("[Onda] band.json indisponível — mantendo a identificação estática da agenda.", error);
+    }
 
     let result;
     try {

@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex">
     <meta name="description" content="Página interna de demonstração dos componentes do Onda Artist Kit. Ferramenta de desenvolvimento.">
     <title>Componentes — Onda Artist Kit</title>
-    <link rel="icon" type="image/png" href="../assets/icons/favcon.png">
+    <link rel="icon" type="image/png" href="../../assets/icons/favcon.png">
     <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
@@ -14,13 +14,13 @@
 
     <header class="site-header">
         <div class="container site-header__inner">
-            <a class="brand" href="../index.html">
+            <a class="brand" href="../../index.html">
                 <span class="brand__logo">
-                    <img class="brand__img" src="../assets/icons/logo.png" alt="">
+                    <img class="brand__img" src="../../assets/icons/logo.png" alt="">
                 </span>
                 <span class="brand__name">Onda Artist Kit</span>
             </a>
-            <a class="btn btn--ghost btn--sm" href="../index.html">Voltar ao início</a>
+            <a class="btn btn--ghost btn--sm" href="../../index.html">Voltar ao início</a>
         </div>
     </header>
 
@@ -75,6 +75,29 @@
                 <div class="hero__actions">
                     <span class="badge">Badge padrão</span>
                     <span class="badge badge--accent">Badge destaque</span>
+                </div>
+
+                <h2 id="cp-repertorio">Repertório (bandas tributo)</h2>
+                <div class="grid">
+                    <p>Cartões de música em destaque e lista numerada do repertório completo — renderizados por <code>renderSongCards</code> e <code>renderSongList</code> (<code>content.js</code>):</p>
+                    <div class="grid grid--3">
+                        <article class="card song-card">
+                            <h3 class="card__title">Música em destaque</h3>
+                            <p class="card__meta">Álbum (2003)</p>
+                        </article>
+                        <article class="card song-card">
+                            <h3 class="card__title">Outra música</h3>
+                            <p class="card__meta">Álbum (2021)</p>
+                        </article>
+                        <article class="card song-card">
+                            <h3 class="card__title">Sem álbum informado</h3>
+                        </article>
+                    </div>
+                    <ol class="song-list">
+                        <li class="song-list__item"><span class="song-list__index" aria-hidden="true">01</span><span class="song-list__title">Primeira música <span class="song-list__album">Álbum (2003)</span></span></li>
+                        <li class="song-list__item"><span class="song-list__index" aria-hidden="true">02</span><span class="song-list__title">Segunda música</span></li>
+                        <li class="song-list__item"><span class="song-list__index" aria-hidden="true">03</span><span class="song-list__title">Terceira música <span class="song-list__album">Álbum (2011)</span></span></li>
+                    </ol>
                 </div>
 
                 <h2 id="cp-links">Links e chips</h2>
@@ -135,7 +158,7 @@
     <footer class="site-footer">
         <div class="container site-footer__inner">
             <p><small>Página interna de desenvolvimento — não é parte do site final.</small></p>
-            <p><small><a href="../index.html">Voltar ao início</a></small></p>
+            <p><small><a href="../../index.html">Voltar ao início</a></small></p>
         </div>
     </footer>
 

@@ -1,47 +1,30 @@
 {
   "title": "Release",
-  "headline": "Release oficial para contratação e imprensa",
-  "presentation": "A Banda Exemplo é um projeto fictício de rock independente de Brasília criado para demonstrar o Onda Artist Kit. Este documento reúne, em um único lugar, o que casas de show, produtores, festivais, imprensa e coletivos precisam saber para conhecer e contratar o projeto.",
+  "headline": "Release oficial para contratação, eventos e imprensa",
+  "description": "Seis músicos, duas guitarras e uma atmosfera construída entre o peso do rock, a intensidade dos vocais e as camadas eletrônicas que dão vida ao universo musical do Evanescence.",
+  "presentation": "A Fallen Evanescence Tributo é uma banda de Brasília, Distrito Federal, fundada em 7 de março de 2024 pela vocalista Amy Lpz. O projeto nasceu da admiração de sua fundadora pelo Evanescence, banda que marcou sua adolescência e inspirou a criação de um tributo dedicado a celebrar sua obra.",
   "biography": [
-    "A Banda Exemplo nasceu em 2024 em uma sala de ensaio no Setor Industrial de Brasília, entre ampladores emprestados e cafeína. O projeto começou como registro caseiro e virou banda de verdade quando as músicas pediram palco.",
-    "Desde então, a banda construiu um repertório autoral que transita entre o rock alternativo e a eletrônica noturna, com apresentações em casas e festivais da capital. Cada show é pensado como uma temporada: luz baixa, volume alto e repertório que evolui a cada passagem de som.",
-    "O próximo passo é a rodada de apresentações de 2026, com datas confirmadas em Brasília e Goiânia. (Biografia demonstrativa — todos os fatos são fictícios.)"
+    "Com uma formação de seis integrantes, a Fallen busca reproduzir a essência musical do Evanescence, explorando os contrastes entre guitarras pesadas, melodias delicadas, vocais intensos e atmosferas eletrônicas e orquestrais.",
+    "A presença de duas guitarras e um DJ dedicado aos samples e elementos eletrônicos permite construir arranjos que incorporam diferentes camadas sonoras das composições originais.",
+    "A banda estreou nos palcos em 1º de novembro de 2024, durante o Horrorween, no Moto Rock e Cia, em Taguatinga Norte.",
+    "Desde então, a Fallen construiu sua trajetória na cena rock do Distrito Federal, participando de festivais, noites temáticas e apresentações em casas de show como Toinha Rock Pub, UK Music Hall, Porks, Trend's Bar e outras.",
+    "Com 25 apresentações registradas em seu histórico divulgado entre 2024 e 2026, a Fallen continua desenvolvendo sua proposta artística, reunindo fãs e celebrando diferentes fases da carreira do Evanescence.",
+    "Seu propósito é proporcionar ao público uma experiência musical que combine fidelidade às composições, intensidade nas apresentações e conexão emocional com as músicas que marcaram gerações."
   ],
   "highlights": [
-    "Seleção para o palco alternativo do Festival Noite Alta (cenário fictício, edição 2025)",
-    "EP \"Maré Alta\" divulgado em rádios universitárias do Centro-Oeste (ação demonstrativa)",
-    "Residência artística de três meses na Sala Subsolo, em Goiânia (projeto fictício)"
+    "2024 — Fundação da Fallen: criação da banda pela vocalista Amy Lpz",
+    "2024 — Estreia nos palcos: Horrorween, no Moto Rock e Cia",
+    "2024 — Under Festival: participação no UK Music Hall",
+    "2025 — RammFest: apresentação com a SONNE Xperience",
+    "2025 — Unholy Nightmare: evento no Trend's Bar",
+    "2025 — Wormzfest DF: participação na segunda edição",
+    "2026 — Retorno aos palcos: apresentação de 30 de maio",
+    "2026 — Nova formação: entrada de Emma Gottlieb"
   ],
-  "experience": "Mais de 40 apresentações em Brasília, Goiânia e São Paulo, em formatos que vão de festivais a casas de show de pequeno porte. A banda já dividiu palco com projetos independentes da cena local e mantém uma residência mensal no Bar Onda, em Brasília. (Informações demonstrativas.)",
-  "discography": [
-    {
-      "title": "Maré Alta",
-      "type": "EP",
-      "year": 2026,
-      "description": "EP de estreia com quatro faixas que definem o som da banda: guitarras secas, sintetizadores frios e letras noturnas.",
-      "cover": null,
-      "links": { "spotify": "https://open.spotify.com/" }
-    },
-    {
-      "title": "Ruído Branco",
-      "type": "Single",
-      "year": 2025,
-      "description": "Single de apresentação da banda, gravado ao vivo em sessão caseira.",
-      "cover": null,
-      "links": { "bandcamp": "https://bandcamp.com/" }
-    },
-    {
-      "title": "Primeira Onda",
-      "type": "Álbum",
-      "year": 2024,
-      "description": "Primeiro álbum, registrado de forma independente entre ensaios e madrugadas de estúdio.",
-      "cover": null,
-      "links": { "youtube": "https://music.youtube.com/" }
-    }
-  ],
+  "experience": "Desde sua estreia em novembro de 2024, a Fallen Evanescence Tributo participa da cena musical do Distrito Federal, levando seu repertório a casas de show, festivais e eventos temáticos. A banda já se apresentou em espaços como Moto Rock e Cia, Toinha Rock Pub, Toinha Brasil Show, UK Music Hall, Porks, Trend's Bar, Dig Rock Bar e O'Rilley Pub. Ao longo de sua trajetória, dividiu a programação de eventos com bandas e projetos como SONNE Xperience, Psycho Groupie, Strangeways, Misfakes, Waking the Fallen, Metrolica e outros representantes da cena rock. Seu histórico divulgado reúne 25 apresentações entre 2024 e 2026, incluindo festivais, eventos temáticos e shows dedicados ao Evanescence. A Fallen atua principalmente em eventos voltados ao rock alternativo, rock gótico, bandas tributo e públicos interessados na obra do Evanescence.",
   "booking": {
-    "description": "Para shows, festivais, parcerias e imprensa, fale diretamente com a produção da banda.",
-    "email": "contato@bandaexemplo.com.br",
-    "phone": null
+    "description": "A Fallen Evanescence Tributo está disponível para apresentações em casas de show, festivais, eventos temáticos e programações especiais. Com uma formação de seis integrantes, a banda oferece um espetáculo dedicado ao Evanescence, combinando instrumentos ao vivo, vocais e elementos eletrônicos. Para consultar disponibilidade, condições comerciais e necessidades técnicas, entre em contato diretamente com a banda.",
+    "email": null,
+    "phone": "(61) 98171-1304"
   }
 }

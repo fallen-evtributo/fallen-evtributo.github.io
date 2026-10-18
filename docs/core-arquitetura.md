@@ -96,6 +96,23 @@ Padrões documentados em `src/pages/components.html` (ferramenta de desenvolvime
 - Estados vazios: agenda exibe mensagem dedicada quando não há próximos shows; seção de histórico é oculta sem passados; Home exibe “Nenhum show agendado…”;
 - Impressão: botões `.ics` ocultos em `@media print`; cards de show preservados entre páginas (`break-inside: avoid` via `.card`).
 
+## Repertório — bandas tributo (extensão da Fase 3)
+
+Bandas tributo não têm discografia autoral. Para não forçar repertório em uma estrutura de lançamentos, o Core suporta um **tipo de conteúdo de repertório**, genérico e opcional:
+
+- **Dados**: `data/repertoire.json` com `title`, `subtitle`, `intro[]`, `note`, `highlights[]` e `songs[]`. Cada entrada aceita string (`"Título"`) ou objeto `{ "title", "album" }` — `normalizeSong` (em `content.js`) valida/normaliza as duas formas e descarta entradas vazias.
+- **Renderização**: `renderSongCards` (cartões `.card.song-card` — títulos em destaque; usado pela Home na seção “Mais tocadas e pedidas”) e `renderSongList` (lista numerada `<ol class="song-list">` — seção “Repertório completo” do Release), ambos exportados em `OndaContent` e reutilizáveis por qualquer página.
+- **Estilo**: componentes genéricos `.song-card` e `.song-list` (`components.css`) — grid responsivo (1/2/3 colunas), numeração com `--color-accent-2`, título com `--color-text` e álbum opcional em `--color-text-muted`. No `@media print`, os itens evitam quebra de página e a lista é impressa em 2 colunas.
+- **Contrato**: o arquivo é **opcional** — se ausente (ou se o `fetch` falhar), a seção mantém o conteúdo estático do HTML (mesmo mecanismo de fallback das demais seções); se presente com a lista vazia, `home.js`/`release.js` ocultam a seção inteira (`hideSection` no Release; `closest("section")` na Home).
+- **Separação**: `discography` continua existindo em `data/release.json` para bandas autorais. As duas estruturas não disputam a mesma seção: o Release da banda tem `#repertorio` (repertório) e pode ter `#discografia` (lançamentos), cada um oculto quando vazio. O tema não participa: os tokens do Core estilizam os novos componentes automaticamente.
+
+### Complementos de conteúdo (opcionais, genéricos)
+
+- `band.lead` — frase de apoio no hero da Home; `band.region` — região de atuação na ficha técnica; `release.description` — frase de descrição no topo do Release. Todos opcionais: ausentes, o texto estático permanece.
+- `agenda.js` hidrata a identificação da banda (`band.name` em `[data-band-name]` e o eyebrow em `[data-page-eyebrow]`), que antes dependia apenas do HTML estático.
+- `home.js` hidrata `booking.phone` (paridade com o Release) e oculta a mensagem de estado vazio quando um próximo show é encontrado.
+- Componente `.actions` (`components.css`): grupo de botões flexível com quebra de linha, alinhado à esquerda — usado sob textos de contratação.
+
 ## Fase 5 — Integração opcional com Google Calendar
 
 - **Solução escolhida**: alimentação **iCal pública** `https://calendar.google.com/calendar/ical/{calendarId}/public/basic.ics` (“Public address in iCal format”), um recurso público oficial que **não exige API Key, OAuth, backend nem banco**. Acessada em runtime via `fetch` (com abort após 8s), parseada localmente e convertida para o formato comum do Core. Sem credenciais no repositório (proíbido por política), sem serviço intermediário, sem Google Calendar API.
