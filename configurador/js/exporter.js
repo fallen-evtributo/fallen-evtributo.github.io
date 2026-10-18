@@ -20,7 +20,8 @@
     "src/js/agenda.js", "src/js/theme-loader.js",
     "src/js/sources/local.js", "src/js/sources/google-icalendar.js",
     "src/components/show-card.js",
-    "assets/icons/favicon.svg"
+    "assets/icons/favcon.png",
+    "assets/icons/logo.png"
   ];
 
   /* Sanitiza um nome de arquivo: apenas [A-Za-z0-9._-], sem paths. */
@@ -145,7 +146,13 @@
     // 4. Core reutilizado
     const coreEntries = [];
     for (const file of CORE_FILES) {
-      try { coreEntries.push({ path: file, data: await fetchText(`../${file}`) }); }
+      try {
+        /* Binários (PNG etc.) precisam de bytes cruos; texto segue como string. */
+        const data = /\.(png|jpe?g|webp|gif|ico)$/i.test(file)
+          ? await fetchBytes(`../${file}`)
+          : await fetchText(`../${file}`);
+        coreEntries.push({ path: file, data });
+      }
       catch { console.warn(`[Configurador] Core não encontrado: ${file}`); }
     }
 

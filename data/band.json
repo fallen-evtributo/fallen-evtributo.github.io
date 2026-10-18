@@ -18,7 +18,7 @@
   ],
   "musicalIdentity": "Rock alternativo com elementos de pós-punk, música eletrônica e estética urbana: guitarras secas, sintetizadores analógicos e batidas dançantes sobre letras noturnas.",
   "influences": ["Pós-punk brasileiro", "Eletrônica de dança", "Rock alternativo dos anos 1990"],
-  "logo": null,
+  "logo": "assets/icons/logo.png",
   "logoAlt": "Logotipo da Banda Exemplo",
   "photo": null,
   "photoAlt": "A Banda Exemplo ao vivo em apresentação (foto demonstrativa)"

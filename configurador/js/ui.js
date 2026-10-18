@@ -397,7 +397,7 @@
     return upcoming[0] || null;
   };
 
-  const BRAND_MARK = `<svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><defs><linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><path d="M12 40c6-14 12-14 18 0s12 14 18 0" fill="none" stroke="url(#brand-grad)" stroke-width="7" stroke-linecap="round"/></svg>`;
+  const BRAND_MARK = `<img class="brand__img" src="../assets/icons/logo.png" alt="">`;
 
   /* Réplica do DOM gerado por src/components/show-card.js (mesmas classes). */
   const previewShowCard = (show) => {
